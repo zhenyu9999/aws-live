@@ -22,9 +22,9 @@ db_conn = connections.Connection(
 
 @app.route("/department_assign")
 def d():
-    department=Department.query.all()
-    employe=Employees.query.all()
-    role= Role.query.all()
+    department=department.query.all()
+    employe=employees.query.all()
+    role= role.query.all()
     return render_template("assign_department.html",role=role,department=department,employe=employe)
 
 @app.route("/assign_department",methods=['GET','POST'])
