@@ -1,0 +1,31 @@
+{%extends 'base.html'%} {% block body %}
+
+<div class="container-fluid p-5">
+  <h1>Employee</h1>
+<table class="center">
+ 
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Qualification</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+     {% for em in employe%}
+    <td>{{em.name}}</td>
+    <td>{{em.email}}</td>
+    <td>{{em.qualification}}</td>
+    <td>{{em.phone}}</td>
+    <td><a href="/update/{{em.id}}"><button type="submit" class="btn btn-warning" style="margin-top: 2%;" >Update</button></a></td>
+    <td><a href="/delete/{{em.id}}"button type="submit" class="btn btn-danger" style="margin-top: 2%;" >Delete</button></a></td>
+    
+    
+
+
+
+  </tr>
+  {%endfor%}
+</table>
+{%endblock%}
