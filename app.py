@@ -7,51 +7,18 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)   
-##postgress
-db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:lenovo123@localhost:3306/assign"
-app.config['SECRET_KEY'] = "random string"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db.init_app(app)
+bucket = custombucket
+region = customregion
 
-class Register(db.Model):
-    __tablename__ = "register"
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100))
-    password = db.Column(db.String(100))
-    first_name = db.Column(db.String(100))
-    last_name = db.Column(db.String(100))
-    gender = db.Column(db.String(100))
-    birthday = db.Column(db.String(100))
+db_conn = connections.Connection(
+    host=customhost,
+    port=3306,
+    user=customuser,
+    password=custompass,
+    db=customdb
 
-class Department(db.Model):
-    __tablename__ = "departments"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    desc = db.Column(db.String(100))
-    empolyee_count = db.Column(db.String(100))
- 
-class Employees(db.Model):
-    # __tablename__ = "register"
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    email = db.Column(db.String(100))
-    phone = db.Column(db.String(100))
-    qualification = db.Column(db.String(100))
- 
-class Role(db.Model):
-    
-    id = db.Column(db.Integer, primary_key=True)
-    role = db.Column(db.String(100))
-  
-class Assign_Department(db.Model):
-    __tablename__ = "assign_department"
-    id = db.Column(db.Integer, primary_key=True)
-    role = db.Column(db.String(100))
-    department = db.Column(db.String(100))
-    employee = db.Column(db.String(100))
-  
+)
 
 @app.route("/department_assign")
 def d():
@@ -66,7 +33,7 @@ def assign_department():
         employe= request.form.get("employe")
         department= request.form.get("department")
         role= request.form.get("role")
-        add = Assign_Department(employee=employe,department=department,role=role)
+        add = assign_department(employee=employe,department=department,role=role)
         db.session.add(add)
         db.session.commit()
         return redirect("/department_assign")
@@ -82,7 +49,7 @@ def ad():
 
 @app.route("/update/<int:id>",methods=['GET','POST'])
 def update(id):
-    em = Employees.query.get(id)
+    em = employee.query.get(id)
     if request.method =="POST":
         em.email = request.form['email']
         em.name = request.form['name']
@@ -94,7 +61,7 @@ def update(id):
 
 @app.route("/delete/<int:id>",methods=['GET','POST'])
 def delete(id):
-    em=Employees.query.filter_by(id=id).first()
+    em=employee.query.filter_by(id=id).first()
     db.session.delete(em)
     db.session.commit()
     return redirect("/employee")
@@ -104,12 +71,12 @@ def delete(id):
 @app.route("/login",methods=['GET','POST'])
 def login():
 
-    user = Register.query.all()
+    user = register.query.all()
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
       
-        use= Register.query.filter_by(username=username,password=password).first()
+        use= register.query.filter_by(username=username,password=password).first()
         if use:
             
             session["username"]=use.username
@@ -129,7 +96,7 @@ def register():
         birthday = request.form.get("birthday")
         gender = request.form.get("gender")
         
-        add=Register(first_name=first_name,last_name=last_name,password=password,username=username,birthday=birthday,gender=gender)
+        add=register(first_name=first_name,last_name=last_name,password=password,username=username,birthday=birthday,gender=gender)
         db.session.add(add)
         db.session.commit()
         return redirect("/")
@@ -159,13 +126,13 @@ def logout():
 @app.route("/employee",methods=['GET','POST'])
 def employe():
     if session.get("username"):
-        employe=Employees.query.all()
+        employe=employees.query.all()
         return render_template("employees.html",employe=employe)
     else:
         return render_template(login.html)
 @app.route("/view_assign",methods=['GET','POST'])
 def view_assign():
-    assign= Assign_Department.query.all()
+    assign= assign_department.query.all()
     return render_template("view_assign.html",assign=assign)
 
 if __name__ == "__main__":
