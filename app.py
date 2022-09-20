@@ -1,9 +1,6 @@
 import os
 
 from flask import Flask, render_template, request, redirect, url_for,session
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
-from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)   
