@@ -136,4 +136,4 @@ def view_assign():
     return render_template("view_assign.html",assign=assign)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
