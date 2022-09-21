@@ -6,7 +6,7 @@ import os
 import boto3
 from config import *
 
-app = Flask(_name_, template_folder='./templates')
+app = Flask(__name__, template_folder='./templates')
 
 bucket = custombucket
 region = customregion
@@ -41,10 +41,10 @@ def assign_department():
 
 @app.route("/")
 def ad():
-    if session.get("username"):
-        return render_template('dashboard.html')
-    else:
-        return render_template('login.html')
+    # if session.get("username"):
+    return render_template('dashboard.html')
+    # else:
+    #     return render_template('login.html')
 
 
 @app.route("/update/<int:id>",methods=['GET','POST'])
