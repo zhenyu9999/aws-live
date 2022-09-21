@@ -42,9 +42,9 @@ def assign_department():
 @app.route("/")
 def ad():
     if session.get("username"):
-    return render_template('dashboard.html')
+    return render_template("dashboard.html")
      else:
-       return render_template('login.html')
+       return render_template("login.html")
 
 
 @app.route("/update/<int:id>",methods=['GET','POST'])
