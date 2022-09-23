@@ -11,9 +11,6 @@
 
     <title>login Form</title>
 
-    <link href="{{url_for('static',filename='vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{url_for('static',filename='vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
-
     <style id="" media="all">
         /* devanagari */
         
@@ -502,12 +499,7 @@
             unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
         }
     </style>
-
-    <link href="{{url_for('static',filename='vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{url_for('static',filename='vendor/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
-
-    <link href="{{url_for('static',filename='css/main.css')}}" rel="stylesheet" media="all">
-    <meta name="robots" content="noindex, follow">
+    
 </head>
 
 <body>
@@ -521,13 +513,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Username</label>
-                                    <input class="input--style-4" type="text" name="username">
+                                    <input class="input--style-4" type="text" name="admin_name">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password">
+                                    <input class="input--style-4" type="password" name="admin_password">
                                 </div>
                             </div>
                         </div>
@@ -542,27 +534,4 @@
             </div>
         </div>
     </div>
-
-    <script src="{{url_for('static',filename='vendor/jquery/jquery.min.js')}}"></script>
-
-    <script src="{{url_for('static',filename='vendor/select2/select2.min.js')}}"></script>
-    <script src="{{url_for('static',filename='vendor/datepicker/moment.min.js')}}"></script>
-    <script src="{{url_for('static',filename='vendor/datepicker/daterangepicker.js')}}"></script>
-
-    <script src="{{url_for('static',filename='js/global.js')}}"></script>
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-23581568-13');
-    </script>
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"rayId":"69a61d8e9f3d14dd","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.9.0","si":100}'></script>
-</body>
-
 </html>
