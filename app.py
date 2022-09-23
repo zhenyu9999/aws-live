@@ -1,7 +1,6 @@
 import os
 
 from flask import Flask, render_template, request, redirect, url_for,session
-from flask_sqlalchemy import SQLAlchemy
 from pymysql import connections
 import os
 import boto3
