@@ -5,8 +5,8 @@ from pymysql import connections
 import os
 import boto3
 from config import *
-
-app = Flask(__name__, template_folder='./templates')
+app = Flask(__name__)
+#app = Flask(__name__, template_folder='./templates')
 
 bucket = custombucket
 region = customregion
@@ -55,14 +55,14 @@ def login():
             session['admin_id'] = account['admin_id']
             session['admin_name'] = account['admin_name']
             # Redirect to home page
-            return 'Logged in successfully!'
+            cursor.close()
             return render_template("dashboard.html")
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
-    return render_template('/', msg=msg)
-
-
-if __name__ == "__main__":
+    return render_template('/login.html', msg=msg)
+    
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
+
