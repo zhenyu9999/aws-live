@@ -515,6 +515,9 @@
                                     <label class="label">Username</label>
                                     <input class="input--style-4" type="text" name="admin_name">
                                 </div>
+                                {% if msg %}
+    <p>Priority: {{ msg }}</p>
+{% endif %}
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
