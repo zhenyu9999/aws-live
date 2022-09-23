@@ -56,11 +56,12 @@ def login():
             session['admin_name'] = account['admin_name']
             # Redirect to home page
             return 'Logged in successfully!'
+            return render_template("dashboard.html")
         else:
             # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
-    return render_template('login.html', msg=msg)
+    return render_template('/', msg=msg)
 
 
 if __name__ == "__main__":
