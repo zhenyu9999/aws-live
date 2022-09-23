@@ -36,7 +36,7 @@ def login():
 
    def login():
     # Output message if something goes wrong...
-   
+    msg = ''
     # Check if "username" and "password" POST requests exist (user submitted form)
     if request.method == 'POST' and 'admin_name' in request.form and 'admin_password' in request.form:
         # Create variables for easy access
@@ -58,10 +58,10 @@ def login():
             cursor.close()
             return render_template("dashboard.html")
         else:
-            # Account doesnt exist or username/password incor000000rect
+            # Account doesnt exist or username/password incorrect
             msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
-    return render_template('/login.html')
+    return render_template('/login.html', msg=msg)
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
