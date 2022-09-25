@@ -1,0 +1,94 @@
+{%extends 'base.html'%}
+ {%block body%}
+<head>
+    <title>Add Employee Information</title>
+</head>
+
+<h1 style="color: DodgerBlue">Employee Database</h1>
+
+<body>
+
+<form action="{{url_for('addEmployee')}}" autocomplete="on" method="POST" enctype="multipart/form-data">
+
+    <button type="submit"
+            style="background: grey; height: 45px; width: 200px; color:white; ">GET EMPLOYEE INFORMATION
+    </button>
+    <br><br>
+
+    <div class="col-2">
+        <div class="input-group">
+            <label class="label">Employee_name:</label>
+            <input class="input--style-4" type="text" name="employee_name">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="input-group">
+            <label class="label">employee_password:</label>
+            <input class="input--style-4" type="password" name="employee_password">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="input-group">
+            <label class="label">employee_email:</label>
+            <input class="input--style-4" type="text" name="employee_email">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="input-group">
+            <label class="label">employee_address:</label>
+            <input class="input--style-4" type="text" name="employee_address">
+            <br><br>
+        </div>
+    </div>
+
+    <div class="col-2">
+        <div class="input-group">
+            <label class="label">employee_mobile:</label>
+            <input class="input--style-4" type="text" name="employee_mobile">
+            <br><br>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="input-group">
+            <label class="label">emp_image_file:</label>
+            <input class="input--style-4" type="file" name="emp_image_file">
+            <br><br>
+        </div>
+    </div>
+
+    <!--            employee_name:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text"-->
+    <!--                                      name="employee_name"><br><br>-->
+
+    <!--          -->
+
+    <!--            employee_password:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text"-->
+    <!--                                          name="employee_password"><br><br>-->
+
+    <!--            employee_email:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text"-->
+    <!--                                       name="employee_email"><br><br>-->
+
+    <!--            employee_address:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text"-->
+    <!--                                         name="employee_address"><br><br>-->
+
+    <!--            employee_mobile:<br> <input style="height:25px;font-size:14pt;color:grey;" type="text"-->
+    <!--                                        name="employee_mobile"><br><br>-->
+
+    <!--            emp_image_file: <input type=file name="emp_image_file" style="height:25px;font-size:14pt;color:grey;">-->
+    <!--            <br><br>-->
+
+    <button type="submit"
+            style="background: grey; height: 45px; width: 200px; color: white; ">Add Employee
+    </button>
+
+</form>
+</body>
+
+
+</html>
+{%endblock%}
