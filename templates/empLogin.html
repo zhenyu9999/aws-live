@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Employee_Login</h2>
+                <form method="POST" action="{{ url_for('empLogin')}}">
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Username</label>
+                                <input class="input--style-4" type="text" name="employee_name">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <input class="input--style-4" type="password" name="employee_password">
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if msg %}
+                    <p>{{ msg }}</p>
+                    {% endif %}
+
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                    </div>
+                    If you don't have a account Then<a href="/register"> Click Here </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-sm-8">
+    <table>
+ <thead>
+                <tr>
+                    <th scope="col">Employee ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Mobile</th>
+                </tr>
+                </thead>
+
+                <!--      #TABLE BODY SHOWING ALL THE EXISTS EMPLOYEE -->
+                <tbody>
+                <!--      #FOR LOOP FOR DISPLAY ALL-->
+                {% for row in profile %}
+                <tr>
+                    <td>{{row.0}}</td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td>{{row.3}}</td>
+                    <td>{{row.4}}</td>
+                    <td>{{row.5}}</td>
+
+                    <td>
+                     <a href="/selectProfile/{{row.0}}" class="btn btn-warning btn-xs" data-toggle="modal"
+                           data-target="#modaledit{{row.0}}">Edit</a>
+
+   </tr>
+
+                <!-- End of Edit Student Modal -->
+                <!--                #END FOR LOOP-->
+                {% endfor %}
+                </tbody>
+            </table>
+</div>
+
+</body>
+</html>
