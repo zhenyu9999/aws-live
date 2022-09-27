@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ASSIGN DEPARTMENT</title>
+
+    <table>
+        <tbody>
+        <tr>
+            <td>
+
+              <form action="/assignDepartment/employeeName/assignRole/assignDepart" method="POST">
+
+                    <select name="employeeName" id="employee">
+                        {% for row in empList %}
+                        <option value="{{row.1}}" name="employeeName">{{row.1}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="assignRole" id="role">
+                        {% for row1 in roleList %}
+                        <option value="{{row1.1}}" name="assignRole">{{row1.1}}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="assignDepart" id="department">
+                        {% for row2 in departmentList %}
+                        <option value="{{row2.1}}"name="assignDepart">{{row2.1}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Submit">
+
+                </form>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</head>
+<body>
+
+</body>
+</html>

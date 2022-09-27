@@ -336,10 +336,80 @@ def logout():
     return render_template('/accountLogin.html')
 
 
+# ASSIGN EMPLOYEE TO THE DIFFERENT DEPARTMENT
+@app.route("/department_assign")
+def department_assign():
+    # a = "SELECT assign_employee FROM assign_department"
+    # cursor = db_conn.cursor()
+    # cursor.execute(a)
+    # results = cursor.fetchone()
+    # session['assignedEmployeeName'] = results
+    # cursor.close()
+
+    emp = "SELECT * FROM employee "
+    role = "SELECT * FROM role"
+    department = "SELECT * FROM departments"
+
+    cursor = db_conn.cursor()
+    cursor.execute(emp)
+    empData = cursor.fetchall()
+    cursor.close()
+
+    cursor = db_conn.cursor()
+    cursor.execute(role)
+    roleData = cursor.fetchall()
+    cursor.close()
+
+    cursor = db_conn.cursor()
+    cursor.execute(department)
+    departmentData = cursor.fetchall()
+    cursor.close()
+
+    print(empData)
+    print(roleData)
+    print(departmentData)
+    return render_template('/assign_department.html', empList=empData, roleList=roleData, departmentList=departmentData)
 
 
+@app.route("/assignDepartment/<employeeName>/<assignRole>/<assignDepart>", methods=['POST', 'GET'])
+def assignDepartment(employeeName, assignRole, assignDepart):
+    if request.method == 'POST' and 'employeeName' in request.form and 'assignRole' in request.form and 'assignDepart' in request.form:
+        employeeName = request.form['employeeName']
+        assignRole = request.form['assignRole']
+        assignDepart = request.form['assignDepart']
+
+        assigned = "INSERT INTO assign_department VALUES(%s,%s,%s)"
+        cursor = db_conn.cursor()
+
+    try:
+        cursor.execute(assigned, (employeeName, assignRole, assignDepart))
+        db_conn.commit()
+
+    finally:
+        cursor.close()
+    return render_template('/dashboard.html')
 
 
+@app.route("/listAssignDepartment")
+def listAssignDepartment():
+    assignedEmployee = "SELECT * FROM assign_department"
+
+    cursor = db_conn.cursor()
+    cursor.execute(assignedEmployee)
+    assignDetails = cursor.fetchall()
+    cursor.close()
+    return render_template('/adminListAssignDepartment.html', assigned=assignDetails)
+
+
+@app.route("/listAssignDepartment1")
+def listAssignDepartment1():
+    assignedEmployee1 = "SELECT * FROM assign_department"
+
+    cursor = db_conn.cursor()
+    cursor.execute(assignedEmployee1)
+    assignDetails1 = cursor.fetchall()
+    cursor.close()
+    return render_template('/empListAssignDepartment.html', assigned1=assignDetails1)
 
 
 if __name__ == '__main__':

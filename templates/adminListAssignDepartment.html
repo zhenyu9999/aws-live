@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+{%block body%}
+
+<div class="container-fluid">
+    <h1 class="text-center alert alert-danger">Assigned Department Name List</h1>
+    <div class="row">
+        <div class="col-sm-2"></div>
+
+        <!--        #ADD THE EMPLOYEE THROUGH HERE-->
+
+        <div class="col-sm-8">
+            <h2>Employee List</h2>
+
+
+            <!--       #TABLE SHOWING ALL THE EMPLOYEE-->
+
+            <!--      #TABLE HEADER SHOWING THE EMPLOYEE DATABASE ATTRIBUTES-->
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Department</th>
+
+                </tr>
+                </thead>
+
+                <!--      #TABLE BODY SHOWING ALL THE EXISTS EMPLOYEE -->
+                <tbody>
+                <!--      #FOR LOOP FOR DISPLAY ALL-->
+                {% for row in assigned %}
+                <tr>
+                    <td>{{row.0}}</td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+
+                </tr>
+
+                <!-- End of Edit Student Modal -->
+                <!--                #END FOR LOOP-->
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+    </div>
+</div>
+{%endblock%}
